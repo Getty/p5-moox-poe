@@ -4,8 +4,10 @@ use strict;
 use warnings;
 use Test::More;
 
-eval "use Moose";
-plan skip_all => "Moose not installed; skipping" if $@;
+BEGIN {
+  eval "use Moose";
+  plan skip_all => "Moose not installed; skipping" if $@;
+}
 
 my $mem_cycle = eval { require Test::Memory::Cycle } || 0;
 my $num_objs = 10;
